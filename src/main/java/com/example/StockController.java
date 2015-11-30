@@ -33,8 +33,8 @@ public class StockController {
     }
     
     @RequestMapping(value="/stock", method=RequestMethod.POST)
-    public Stock stock(@RequestParam(value="id", defaultValue="MS") String id,
-    		@RequestParam(value="price", defaultValue="42.0") double price) {
+    public Stock stock(@RequestParam(value="id", defaultValue="NFLX") String id,
+    		@RequestParam(value="price", defaultValue="100.0") double price) {
     	Stock stock = new Stock(id, price);
     	logger.info("Saving...: " + stock);
     	Stock savedStock = stockRepository.save(stock);
