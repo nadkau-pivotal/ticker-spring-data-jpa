@@ -10,9 +10,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringApplicationConfiguration(classes = TickerApplication.class)
 @WebAppConfiguration
 public class TickerApplicationTests {
+	
+	@Autowired
+	StockRepository stockRepository;
 
 	@Test
-	public void contextLoads() {
+	public void testStockRepository() {
+		Stock stock = new Stock("NFLX", 100.00);
+		stockRepository.save(stock);
+		System.out.println("StockRepository count: " + stockRepository.count());
+		Assert.isTrue(stockRepository.count() == 1);
 	}
-
 }
